@@ -1,8 +1,8 @@
 {
   "channel_type": "wx",
-  "model": "gpt-3.5-turbo",
-  "open_ai_api_key": "sk-0JGcnYW8I0NkMJetRc6MiDdohZLBpxxU0aQiRUJj2qWHYuaW",
-  "open_ai_api_base": "https://openkey.cloud/v1",
+  "model": "llama2-70b-4096",
+  "open_ai_api_key": "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",
+  "open_ai_api_base": "https://api.groq.com/openai/v1",
   "text_to_image": "dall-e-2",
   "voice_to_text": "openai",
   "text_to_voice": "openai",
