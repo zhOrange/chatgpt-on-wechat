@@ -1,6 +1,6 @@
 {
   "channel_type": "wx",
-  "model": "llama2-70b-4096",
+  "model": "mixtral-8x7b-32768",
   "open_ai_api_key": "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",
   "open_ai_api_base": "https://api.groq.com/openai/v1",
   "text_to_image": "dall-e-2",

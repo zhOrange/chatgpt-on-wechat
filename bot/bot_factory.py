@@ -55,6 +55,9 @@ def create_bot(bot_type):
     elif bot_type == const.ZHIPU_AI:
         from bot.zhipuai.zhipuai_bot import ZHIPUAIBot
         return ZHIPUAIBot()
-
+    
+    elif bot_type == const.GROQ:
+        from bot.groq.groq_bot import GroqBot
+        return GroqBot()
 
     raise RuntimeError
