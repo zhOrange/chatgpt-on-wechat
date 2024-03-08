@@ -54,6 +54,7 @@ class Tool(Plugin):
             const.OPEN_AI,
             const.CHATGPTONAZURE,
             const.LINKAI,
+            const.GROQ
         ):
             return
 
@@ -92,10 +93,10 @@ class Tool(Plugin):
                     return
                 query = content_list[1].strip()
                 
-                use_one_tool = False
+                tool_name_specified = ""
                 for tool_name in main_tool_register.get_registered_tool_names():
                     if query.startswith(tool_name):
-                        use_one_tool = True
+                        tool_name_specified = tool_name
                         query = query[len(tool_name):]
                         break
 
@@ -105,10 +106,10 @@ class Tool(Plugin):
 
                 logger.debug("[tool]: just-go")
                 try:
-                    if use_one_tool:
-                        _func, _ = main_tool_register.get_registered_tool()[tool_name]
-                        tool = _func(**self.app_kwargs)
-                        _reply = tool.run(query)
+                    if tool_name_specified:
+                        _func, _ = main_tool_register.get_registered_tool()[tool_name_specified]
+                        specified_tool = _func(**self.app_kwargs)
+                        _reply = specified_tool.run(query)
                     else:
                         # chatgpt-tool-hub will reply you with many tools
                         _reply = self.app.ask(query, user_session)
