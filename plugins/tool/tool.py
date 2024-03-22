@@ -48,14 +48,9 @@ class Tool(Plugin):
         if e_context["context"].type != ContextType.TEXT:
             return
 
+        applicableModels = (const.CHATGPT, const.OPEN_AI, const.CHATGPTONAZURE, const.LINKAI, const.GROQ)
         # 暂时不支持未来扩展的bot
-        if Bridge().get_bot_type("chat") not in (
-            const.CHATGPT,
-            const.OPEN_AI,
-            const.CHATGPTONAZURE,
-            const.LINKAI,
-            const.GROQ
-        ):
+        if Bridge().get_bot_type("chat") not in applicableModels:
             return
 
         content = e_context["context"].content
@@ -92,12 +87,12 @@ class Tool(Plugin):
                     e_context.action = EventAction.BREAK
                     return
                 query = content_list[1].strip()
-                
+
                 tool_name_specified = ""
                 for tool_name in main_tool_register.get_registered_tool_names():
                     if query.startswith(tool_name):
                         tool_name_specified = tool_name
-                        query = query[len(tool_name):]
+                        query = query[len(tool_name) :]
                         break
 
                 # Don't modify bot name
@@ -173,16 +168,16 @@ class Tool(Plugin):
             # for google-search tool
             "google_api_key": kwargs.get("google_api_key", ""),
             "google_cse_id": kwargs.get("google_cse_id", ""),
-            "google_simple": kwargs.get("google_simple", True),   # 返回内容更精简
+            "google_simple": kwargs.get("google_simple", True),  # 返回内容更精简
             "google_output_type": kwargs.get("google_output_type", "text"),  # 搜索结果类型 ["text", "json"]
             # for finance-news tool
             "finance_news_filter": kwargs.get("finance_news_filter", False),  # 是否开启过滤
             "finance_news_filter_list": kwargs.get("finance_news_filter_list", []),  # 过滤词列表
-            "finance_news_simple": kwargs.get("finance_news_simple", True),   # 返回内容更精简
+            "finance_news_simple": kwargs.get("finance_news_simple", True),  # 返回内容更精简
             "finance_news_repeat_news": kwargs.get("finance_news_repeat_news", False),  # 是否过滤不返回。该tool每次返回约50条新闻，可能有重复新闻
             # for morning-news tool
-            "morning_news_api_key": kwargs.get("morning_news_api_key", ""),   # api-key
-            "morning_news_simple": kwargs.get("morning_news_simple", True),   # 返回内容更精简
+            "morning_news_api_key": kwargs.get("morning_news_api_key", ""),  # api-key
+            "morning_news_simple": kwargs.get("morning_news_simple", True),  # 返回内容更精简
             "morning_news_output_type": kwargs.get("morning_news_output_type", "text"),  # 搜索结果类型 ["text", "image"]
             # for news-api tool
             "news_api_key": kwargs.get("news_api_key", ""),
