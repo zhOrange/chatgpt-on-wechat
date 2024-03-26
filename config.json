@@ -4,7 +4,7 @@
   "open_ai_api_key": "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",
   "open_ai_api_base": "https://api.groq.com/openai/v1",
   "text_to_image": "dall-e-2",
-  "voice_to_text": "openai",
+  "voice_to_text": "pytts",
   "text_to_voice": "openai",
   "proxy": "",
   "hot_reload": false,

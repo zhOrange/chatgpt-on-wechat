@@ -35,6 +35,8 @@ class Bridge(object):
             self.btype["chat"] = const.ZHIPU_AI
         if model_type in [const.GROQ_LLAMA2, const.GROQ_MIXTRAL]:
             self.btype["chat"] = const.GROQ
+        self.btype["voice_to_text"] = conf().get("voice_to_text", "openai")
+        self.btype["text_to_voice"] = conf().get("text_to_voice", "google")
 
         if conf().get("use_linkai") and conf().get("linkai_api_key"):
             self.btype["chat"] = const.LINKAI
@@ -68,7 +70,8 @@ class Bridge(object):
         return self.get_bot("chat").reply(query, context)
 
     def fetch_voice_to_text(self, voiceFile) -> Reply:
-        return self.get_bot("voice_to_text").voiceToText(voiceFile)
+        bot_v2t = self.get_bot("voice_to_text")
+        return bot_v2t.voiceToText(voiceFile)
 
     def fetch_text_to_voice(self, text) -> Reply:
         return self.get_bot("text_to_voice").textToVoice(text)

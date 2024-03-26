@@ -338,8 +338,7 @@ class Godcmd(Plugin):
                             load_config()
                             ok, result = True, "配置已重载"
                         elif cmd == "resetall":
-                            if bottype in [const.OPEN_AI, const.CHATGPT, const.CHATGPTONAZURE, const.LINKAI,
-                                           const.BAIDU, const.XUNFEI, const.QWEN, const.GEMINI]:
+                            if bottype in [const.OPEN_AI, const.CHATGPT, const.CHATGPTONAZURE, const.LINKAI, const.BAIDU, const.XUNFEI, const.QWEN, const.GEMINI, const.GROQ]:
                                 channel.cancel_all_session()
                                 bot.sessions.clear_all_session()
                                 ok, result = True, "重置所有会话成功"
@@ -464,12 +463,10 @@ class Godcmd(Plugin):
     def get_help_text(self, isadmin=False, isgroup=False, **kwargs):
         return get_help_text(isadmin, isgroup)
 
-
     def is_admin_in_group(self, context):
         if context["isgroup"]:
             return context.kwargs.get("msg").actual_user_id in global_config["admin_users"]
         return False
-
 
     def model_mapping(self, model) -> str:
         if model == "gpt-4-turbo":
