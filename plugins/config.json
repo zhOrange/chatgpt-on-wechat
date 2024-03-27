@@ -19,12 +19,14 @@
       "finance-news",
       "morning-news",
       "google-search",
+      "bing-search",
       "arxiv"
     ],
     "kwargs": {
       "debug": false,
       "no_default": false,
       "model_name": "gpt-3.5-turbo",
+      "bing_subscription_key": "01a1c27f81b6419088154fea98183ef7",
       "google_api_key": "AIzaSyBx-dOJtU1Hs5AlTpuz7DMvQxLgsfKxMII",
       "google_cse_id": "d52431edd76974deb",
       "morning_news_api_key": "RYmw3WqJ2Jjp86Sz",
