@@ -74,7 +74,8 @@ class Bridge(object):
         return bot_v2t.voiceToText(voiceFile)
 
     def fetch_text_to_voice(self, text) -> Reply:
-        return self.get_bot("text_to_voice").textToVoice(text)
+        bot_t2v = self.get_bot("text_to_voice")
+        return bot_t2v.textToVoice(text)
 
     def fetch_translate(self, text, from_lang="", to_lang="en") -> Reply:
         return self.get_bot("translate").translate(text, from_lang, to_lang)
