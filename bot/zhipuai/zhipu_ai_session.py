@@ -31,8 +31,7 @@ class ZhipuAISession(Session):
                 logger.warn("user message exceed max_tokens. total_tokens={}".format(cur_tokens))
                 break
             else:
-                logger.debug("max_tokens={}, total_tokens={}, len(messages)={}".format(max_tokens, cur_tokens,
-                                                                                       len(self.messages)))
+                logger.debug("max_tokens={}, total_tokens={}, len(messages)={}".format(max_tokens, cur_tokens, len(self.messages)))
                 break
             if precise:
                 cur_tokens = self.calc_tokens()

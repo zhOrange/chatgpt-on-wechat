@@ -4,9 +4,11 @@ from config import conf
 
 # ZhipuAI提供的画图接口
 
+
 class ZhipuAIImage(object):
     def __init__(self):
         from zhipuai import ZhipuAI
+
         self.client = ZhipuAI(api_key=conf().get("zhipu_ai_api_key"))
 
     def create_img(self, query, retry_count=0, api_key=None, api_base=None):

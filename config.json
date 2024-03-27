@@ -5,7 +5,7 @@
   "open_ai_api_base": "https://api.groq.com/openai/v1",
   "text_to_image": "dall-e-2",
   "voice_to_text": "pytts",
-  "text_to_voice": "openai",
+  "text_to_voice": "edge",
   "proxy": "",
   "hot_reload": false,
   "single_chat_prefix": ["bot", "@bot"],
